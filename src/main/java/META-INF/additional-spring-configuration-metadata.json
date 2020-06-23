@@ -1,0 +1,37 @@
+{"properties": [
+  {
+    "name": "app.jwt.id",
+    "type": "java.lang.String",
+    "description": "A description for 'app.jwt.id'"
+  },
+  {
+    "name": "app.jwt.issuer",
+    "type": "java.lang.String",
+    "description": "A description for 'app.jwt.issuer'"
+  },
+  {
+    "name": "app.jwt.subject",
+    "type": "java.lang.String",
+    "description": "A description for 'app.jwt.subject'"
+  },
+  {
+    "name": "app.jwt.timeinmili",
+    "type": "java.lang.String",
+    "description": "A description for 'app.jwt.timeinmili'"
+  },
+  {
+    "name": "app.jwt.secret",
+    "type": "java.lang.String",
+    "description": "A description for 'app.jwt.secret'"
+  },
+  {
+    "name": "-----BEGIN",
+    "type": "java.lang.String",
+    "description": "A description for '-----BEGIN'"
+  },
+  {
+    "name": "app.TCP",
+    "type": "java.lang.String",
+    "description": "A description for 'app.TCP'"
+  }
+]}

@@ -1,0 +1,22 @@
+You must make your PCKS8 file from your private key!
+==================================================================================================================
+private.pem => name of private key file
+openssl genrsa -out private.pem 2048
+==================================================================================================================
+
+==================================================================================================================
+public_key.pem => name of public key file
+openssl rsa -in private.pem -pubout -outform PEM -out public_key.pem
+==================================================================================================================
+
+==================================================================================================================
+‫‪private_key.pem‬‬ => name of private key with PCKS8 format! you can just read this format in java
+openssl pkcs8 -topk8 -inform PEM -in private.pem -out private_key.pem -nocrypt
+==================================================================================================================
+
+**** The current implementation is based on PKCS8 standard only. For anychange in that the code may have to be changed.
+
+**** In the application.yaml all the client ids should be on all upper case, including in the private key area.
+     Also "::" has been choosen as the delimeter as it has less chances to be included in the private key.
+	 
+**** All the key in the application yaml should be in a linear format without any newline or lien break
