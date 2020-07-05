@@ -17,6 +17,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import org.infinispan.client.hotrod.RemoteCache;
+import org.infinispan.client.hotrod.RemoteCacheManager;
+import org.infinispan.client.hotrod.configuration.ClientIntelligence;
+import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
+import org.infinispan.client.hotrod.configuration.SaslQop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -31,7 +37,22 @@ public class RHDGMessageController {
 	@Autowired
 	@Value("${application.url}")
 	private String urlServerAddress;
+	@Value("${jdg.host}")
+	private String JDG_HOST;
+	@Value("${jdg.hotrod.port}")
+	private Integer HOTROD_PORT;
+	@Value("${jdg.hotrod.HOTROD_ROUTE_HOSTNAME}")
+	private String HOTROD_ROUTE_HOSTNAME;
+	@Value("${jdg.hotrod.USERNAME}")
+	private String USERNAME;
+	@Value("${jdg.hotrod.PASSWORD}")
+	private String PASSWORD;
+	@Value("${jdg.hotrod.APPLICATION_NAME}")
+	private String APPLICATION_NAME;
+			
 	Gson gson = new Gson();
+	private RemoteCacheManager cacheManager;
+    private RemoteCache<String, Object> cache;
 	
 	
 	@PutMapping(path= "/insert", consumes = "application/json", produces = "application/json")
@@ -75,7 +96,7 @@ public class RHDGMessageController {
 			
 		} 
 		
-		return null;		
+		return new ResponseEntity<String>("successfully inserted into RHDG cache", HttpStatus.OK);		
 	}
 	
 	@GetMapping(path="/fetch", produces = "application/json")
@@ -126,11 +147,57 @@ public class RHDGMessageController {
 		finally {
 			connection.disconnect();
 			
-		} 
+		} 		
+	}
+	
+	@PutMapping(path= "/insert/hotrod", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<String> rhdghotrodInnsertData(@RequestBody String value){
+		ConfigurationBuilder builder = new ConfigurationBuilder();
+		try {
+			  System.out.println("----------------------------------------");
+		      System.out.println("Executing PUT");
+		      System.out.println("----------------------------------------");
+//		      builder = new ConfigurationBuilder();
+//		        builder.addServer()
+//		              .host(JDG_HOST)
+//		              .port(Integer.parseInt(HOTROD_PORT));
+//		        cacheManager = new RemoteCacheManager(builder.build());
+//		        cache = cacheManager.getCache("default");
+//		        cache.put("a", value);	
+//		        ConfigurationBuilder builder = new ConfigurationBuilder();
+		        builder.addServer()
+		        	// Connection
+		        	.host(JDG_HOST).port(HOTROD_PORT)
+		        	// Use BASIC client intelligence.
+		        	.clientIntelligence(ClientIntelligence.BASIC)
+		        	.security()
+		                // Authentication
+		                .authentication().enable()
+		                .username(USERNAME)
+		                .password(PASSWORD)
+		                .serverName(APPLICATION_NAME)
+		                .saslQop(SaslQop.AUTH)
+		                // Encryption
+		                .ssl()
+		                .sniHostName(HOTROD_ROUTE_HOSTNAME)
+		                .trustStorePath(".\\tls.crt");
+		        
+		       
+		      System.out.println("----------------------------------------");
+		      System.out.println("End hot rod connection");
+		      System.out.println("----------------------------------------");
+			
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ResponseStatusException(
+			           HttpStatus.NOT_ACCEPTABLE, "Token validation failed");
+		}
 		
-		
-		
+		return new ResponseEntity<String>("successfully inserted into RHDG hot rod cache", HttpStatus.OK);
 		
 	}
+	
 
 }
