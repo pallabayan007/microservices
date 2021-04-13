@@ -1,0 +1,9 @@
+2021-04-14 00:18:15.633  INFO 1664 --- [main] c.e.l.demo.Log4j2exampledemoApplication  : Starting Log4j2exampledemoApplication using Java 15.0.2 on Almightys-PC with PID 1664 (E:\Eclipse_Workspaces\STS_Workspace\log4j2exampledemo\target\classes started by ayan_ in E:\Eclipse_Workspaces\STS_Workspace\log4j2exampledemo)
+2021-04-14 00:18:15.634  INFO 1664 --- [main] c.e.l.demo.Log4j2exampledemoApplication  : No active profile set, falling back to default profiles: default
+2021-04-14 00:18:15.875  INFO 1664 --- [main] c.e.l.demo.Log4j2exampledemoApplication  : Started Log4j2exampledemoApplication in 0.427 seconds (JVM running for 0.839)
+2021-04-14 00:18:35.900  INFO 4256 --- [main] c.e.l.demo.Log4j2exampledemoApplication  : Starting Log4j2exampledemoApplication using Java 15.0.2 on Almightys-PC with PID 4256 (E:\Eclipse_Workspaces\STS_Workspace\log4j2exampledemo\target\classes started by ayan_ in E:\Eclipse_Workspaces\STS_Workspace\log4j2exampledemo)
+2021-04-14 00:18:35.903  INFO 4256 --- [main] c.e.l.demo.Log4j2exampledemoApplication  : No active profile set, falling back to default profiles: default
+2021-04-14 00:18:36.138  INFO 4256 --- [main] c.e.l.demo.Log4j2exampledemoApplication  : Started Log4j2exampledemoApplication in 0.436 seconds (JVM running for 0.896)
+2021-04-14 00:19:05.600  INFO 14912 --- [main] c.e.l.demo.Log4j2exampledemoApplication  : Starting Log4j2exampledemoApplication using Java 15.0.2 on Almightys-PC with PID 14912 (E:\Eclipse_Workspaces\STS_Workspace\log4j2exampledemo\target\classes started by ayan_ in E:\Eclipse_Workspaces\STS_Workspace\log4j2exampledemo)
+2021-04-14 00:19:05.601  INFO 14912 --- [main] c.e.l.demo.Log4j2exampledemoApplication  : No active profile set, falling back to default profiles: default
+2021-04-14 00:19:05.851  INFO 14912 --- [main] c.e.l.demo.Log4j2exampledemoApplication  : Started Log4j2exampledemoApplication in 0.443 seconds (JVM running for 0.866)
